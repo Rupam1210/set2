@@ -7,6 +7,7 @@ public class Main {
       //            Task 
       // ------------------------------------------
         //Declare variables of type integer 
+       Scanner sc=new Scanner(System.in)
         int userChoice, computerChoice, rock, paper, scissors;
         //create random input for the computer
         Random rnd = new Random();  
