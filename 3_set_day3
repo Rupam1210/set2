@@ -1,0 +1,147 @@
+// import static org.junit.jupiter.api.Assertions.assertEquals;
+
+// import org.junit.jupiter.api.Test;
+
+class Main {
+  static void multiplication(int n) {
+    for (int i = 1; i <= 10; i++) {
+        System.out.format("%d X %d = %d\n", n, i, n * i);
+    }
+  }
+
+  static void pattern1(int n) {
+    for (int i = 0; i < n; i++) {
+      
+        for (int j = 0; j < i + 1; j++) {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+  }
+  static void pattern4(int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+  }
+  static void pattern4_rec(int n) {
+    if(n>0){
+     
+      for (int j = 0; j < n; j++) {
+        System.out.print("*");
+      }
+      System.out.println();
+       pattern1_rec(n-1);
+    }
+  }
+
+  static void pattern1_rec(int n) {
+    if (n > 0) {
+        pattern1_rec(n - 1);
+        for (int i = 0; i < n; i++) {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+  }
+   
+  static int sumRec(int n) {
+    // Base condition
+    if (n == 1) {
+        return 1;
+    }
+    return n + sumRec(n - 1);
+  }
+  static int avg(int [] arr) {
+    // Base condition
+    int res=0;
+    int n=arr.length;
+    for(int i=0;i<n;i++){
+      res+=arr[i];
+    }
+    return  res/n;
+  }
+
+  static int fib(int n) {
+    
+    if (n == 1 || n == 2) {
+        return n - 1;
+    } else {
+        return fib(n - 1) + fib(n - 2);
+    }
+  }
+  static int itera(int n){
+    int sum=0;
+    for(int i=1;i<=n;i++){
+      sum+=i;
+    }
+    return sum;
+  }
+  static int c_2_f(int n){
+    return(n*9/5)+32;
+  }
+
+  public static void main(String[] args) {
+    // Problem 1
+    System.out.println("Qouestion 1:  Java method to print the multiplication table of a number n.");
+    multiplication(7);
+
+    // Problem 2
+    System.out.println("Qouestion 2:  to print the following pattern:");
+    pattern1(9);
+    // Problem 3
+     System.out.println("Qouestion 3:  calculate the sum of first n natural numbers.");
+    int c = sumRec(4);
+    System.out.println(c);
+
+    // Problem 4
+     System.out.println("Qouestion 4:  to print the following pattern:");
+     pattern4(6);
+    // fibonacci series - 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
+    
+    //----------------------------
+//problem 5
+    //--------------------
+     System.out.println("Qouestion 5:  to print the nth term of the Fibonacci series using recursion.");
+    System.out.println("the no is n=10");
+    int result = fib(10);
+    System.out.println(result);
+     //----------------------------
+    //problem 6
+        //--------------------
+    System.out.println("Qouestion 6:  find the average of a set of numbers passed as arguments.:");
+    int [] marks={34,56,67,1,5,78};
+    int ans=avg(marks);
+    System.out.println("average is :"+ans);
+     //----------------------------
+    //problem 7
+        //--------------------
+    System.out.println("Qouestion 7:  problem 4 using Recursion:");
+     pattern4_rec(6);
+    // Problem 8
+    System.out.println("Qouestion 8:  problem 2 using Recursion");
+    pattern1(9);
+
+    //----------------------------
+   //problem 9
+       //--------------------
+    System.out.println("Qouestion 9:  function to convert Celsius temperature into Fahrenheit.");
+    int cel=c_2_f(10);
+    System.out.println("10 deg to F is "+cel);
+
+  
+   //----------------------------
+  //problem 10
+      //--------------------
+    System.out.println("Qouestion 10:   problem 3 using an iterative approach.");
+    int an=itera(8);
+    System.out.println("sum of n natural no. 8 is :" + an);
+  }
+
+  // @Test
+  // void addition() {
+  //     assertEquals(2, 1 + 1);
+  // }
+}
