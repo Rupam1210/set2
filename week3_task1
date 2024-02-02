@@ -1,0 +1,118 @@
+import java.util.Scanner;
+class Library{
+    String[] books;
+    int no_of_books;
+    Library(){
+        this.books = new String[100];
+        this.no_of_books = 0;
+    }
+
+    void addBook(String book){
+        this.books[no_of_books] = book;
+        no_of_books++;
+        System.out.println(book+ " has been added!");
+    }
+
+    void showAvailableBooks(){
+        System.out.println("Available Books are:");
+        for (String book : this.books) {
+            if (book == null){
+                continue;
+            }
+            System.out.println("* " + book);
+        }
+    }
+
+    void issueBook(String book){
+            for (int i=0;i<this.books.length;i++){
+            if (this.books[i].equals(book)){
+              if(this.books[i]==null){
+                System.out.println("This book does not exist");
+                return;
+              }
+                System.out.println("The book has been issued!");
+                this.books[i] = null;
+                return;
+            }
+        }
+        System.out.println("This book does not exist");
+    }
+
+    void returnBook(String book){
+        addBook(book);
+    }
+
+}
+public class Main {
+    public static void main(String[] args) {
+        // You have to implement a library using Java Class "Library"
+        // Methods: addBook, issueBook, returnBook, showAvailableBooks
+        // Properties: Array to store the available books,
+        // Array to store the issued books
+
+        Library centralLibrary = new Library();
+      System.out.println("welcome to the library");
+       System.out.println("please enter your book name");
+      Scanner sc=new Scanner(System.in);
+        String book;
+      book= sc.nextLine();
+       centralLibrary.addBook(book);
+      boolean a=true;
+      int opt;
+      while(a){
+        System.out.println("Which option is you want to choose");
+         System.out.println("1.add your book");
+        System.out.println("2.show Available Book");
+        System.out.println("3.Book you want to issued ");
+        System.out.println("4.Return the  book  to counter");
+        System.out.println("5.Exits");
+        opt= sc.nextInt();
+   
+        if(opt==5){
+          a=false;
+          break;
+        }
+        else if(opt==1){
+          System.out.println("please enter your book name");
+          sc.nextLine();
+           book= sc.nextLine();
+           centralLibrary.addBook(book);
+         
+        }
+        else if(opt==2){
+          System.out.println("Available books");
+           centralLibrary.showAvailableBooks();
+         
+        }
+        else if(opt==3){
+          System.out.println("book you want to issued");
+          sc.nextLine();
+           book= sc.nextLine();
+        centralLibrary.issueBook(book);
+         
+          
+        }
+        else if(opt==4){
+          System.out.println("book you want to return");
+          sc.nextLine();
+           book= sc.nextLine();
+          centralLibrary.returnBook(book);
+           
+
+        }else{
+          System.out.println("please enter valid option");
+        }
+        
+        
+      }
+        // centralLibrary.addBook("Think and grow Rich");
+        // centralLibrary.addBook("Algorithms");
+        // centralLibrary.addBook("C++");
+   
+
+        // centralLibrary.issueBook("C++");
+        // centralLibrary.showAvailableBooks();
+        // centralLibrary.returnBook("C++");
+        // centralLibrary.showAvailableBooks();
+    }
+}
