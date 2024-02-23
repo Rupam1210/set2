@@ -1,0 +1,49 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.sql.*;
+import java.sql.DriverManager;
+
+@SuppressWarnings("unused")
+public class update {
+    public static void main(String[] args) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url="jdbc:mysql://localhost:3306/youtube";
+            Connection con=DriverManager.getConnection(url, "root","rupam@123");
+             
+            // String q="update  table1 set tName=?, tcity=? where tId=?";
+            // PreparedStatement stmt=con.prepareStatement(q);
+            
+            // BufferedReader br=new BufferedReader((new InputStreamReader(System.in)));
+            // System.out.println("Enter the new name: ");
+            // String name=br.readLine();
+            // System.out.println("Enter the  City: ");
+            // String city=br.readLine();
+            // System.out.println("Enter the  id: ");
+            // int id= Integer.parseInt(br.readLine());
+            // //insert
+            //  stmt.setString(1,name);
+            //  stmt.setString(2,city);
+            //  stmt.setInt(3, id);
+            //  stmt.executeUpdate();
+            
+
+            // System.out.println("update  the data ....");
+              
+            String query="Select * from table1";
+            Statement sat=con.createStatement();
+            ResultSet set=sat.executeQuery(query);
+            while(set.next()){
+                int id=set.getInt(1);
+                String name =set.getString(2);
+                String city =set.getString(3);
+                System.out.println(id+" : "+name+" - "+city);
+            }
+            
+            
+        } catch (Exception e) {
+             
+            e.printStackTrace();
+        }
+    }
+}
