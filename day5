@@ -39,6 +39,15 @@ public class update {
                 String city =set.getString(3);
                 System.out.println(id+" : "+name+" - "+city);
             }
+         String q="insert into imgae(pic) values=?";
+            PreparedStatement pstmt=con.prepareStatement(q);
+            JFileChooser jfc=new JFileChooser();
+            jfc.showOpenDialog(null);
+            File file=jfc.getSelectedFile();
+            FileInputStream fis=new FileInputStream(file);
+            pstmt.setBinaryStream(1, fis,fis.available());
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "success"); 
             
             
         } catch (Exception e) {
